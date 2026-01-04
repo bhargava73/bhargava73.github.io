@@ -453,7 +453,7 @@ html {
 
 /* Sections */
 section {
-	padding: 60px 0;
+	padding: 30px 0;
 	background-color: var(--section-bg);
 	color: var(--color-fg);
 	transition: background-color var(--trans-dur), color var(--trans-dur);
@@ -484,7 +484,7 @@ section {
 .section-sub-title {
 	text-align: center;
 	margin-bottom: 32px;
-	margin-top: 80px;
+	margin-top: 20px;
 	font-size: 24px;
 	font-weight: 600;
 	color: var(--color-fg);
@@ -867,9 +867,22 @@ section {
 }
 
 #projects .date {
-	order: 1;
-	margin-bottom: 16px;
-	align-self: flex-start;
+	margin-bottom: 0;
+}
+
+.timeline-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	width: 100%;
+	gap: 16px;
+	margin-bottom: 12px;
+	flex-wrap: wrap;
+}
+
+.timeline-header h3 {
+	margin-bottom: 0 !important;
+	padding-right: 0 !important;
 }
 
 /* Apply same content flexbox to all timeline items */
@@ -880,28 +893,62 @@ section {
 
 /* Create horizontal layout for title and date in timeline sections */
 .timeline-content .date {
-	position: absolute;
-	top: 20px;
-	right: 20px;
 	margin-bottom: 0;
 }
 
-.timeline-content h3 {
-	padding-right: 150px;
+
+
+/* Education Section - Improved Structure */
+.ed-institution {
+	font-size: 16px;
+	font-weight: 600;
+	color: var(--color-fg);
+	margin-top: 8px;
+	margin-bottom: 4px;
 }
 
-/* Ensure proper spacing for certification title */
-.cc-title {
-	padding-right: 150px;
+.ed-location {
+	font-size: 14px;
+	color: var(--color-fg-secondary);
+	margin-bottom: 12px;
+	display: flex;
+	align-items: center;
+	gap: 6px;
 }
 
-.ed-h5 {
+.ed-location::before {
+	content: "📍";
+	font-size: 12px;
+}
+
+.ed-score {
 	margin-top: auto;
 	padding-top: 16px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	border-top: 1px solid var(--border-color);
+	padding-top: 12px;
 }
+
+.score-label {
+	font-size: 13px;
+	font-weight: 600;
+	color: var(--color-fg-secondary);
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.score-value {
+	font-size: 20px;
+	font-weight: 700;
+	color: var(--primary);
+	padding: 4px 12px;
+	background: linear-gradient(135deg, rgba(13, 148, 136, 0.1), rgba(20, 184, 166, 0.15));
+	border-radius: 8px;
+	border: 1px solid rgba(13, 148, 136, 0.2);
+}
+
 
 /* Certifications - unified with date badge style */
 .cc-time {
@@ -914,20 +961,16 @@ section {
 	text-transform: uppercase;
 	color: var(--primary);
 	border-radius: 20px;
-	position: absolute;
-	right: 20px;
-	top: 20px;
 	letter-spacing: 0.5px;
 	transition: all 0.3s ease;
+	flex-shrink: 0;
+	margin-top: 4px;
 }
 
 .cc-title {
-	margin-top: 0;
-	margin-bottom: 16px;
-	font-size: 16px;
-	font-weight: 600;
-	color: var(--primary);
+	margin-bottom: 0 !important;
 }
+
 
 .cc-spans {
 	margin: 0 0 16px 0;
@@ -999,19 +1042,30 @@ section {
 	flex-direction: column;
 }
 
-#projects .date {
+#projects .timeline-img-header {
 	order: 1;
-	margin-bottom: 12px;
 }
 
-#projects .timeline-img-header {
+#projects .timeline-header {
 	order: 2;
+	margin-bottom: 8px;
 }
 
 #projects .timeline-content h3 {
-	order: 3;
+	order: unset;
 	margin-top: 0;
-	margin-bottom: 12px;
+	margin-bottom: 0;
+	flex: 1;
+}
+
+#projects .date {
+	order: unset;
+	margin-bottom: 0;
+	flex-shrink: 0;
+}
+
+#projects .tech-stacks {
+	order: 3;
 }
 
 #projects .timeline-content ul {
@@ -1066,6 +1120,44 @@ section {
 #projects .timeline-content ul ul li::before {
 	display: none;
 }
+
+/* Tech Stacks Section */
+.tech-stacks {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	align-items: center;
+	margin-bottom: 12px;
+	padding: 8px 0;
+}
+
+.tech-label {
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--color-fg-secondary);
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	margin-right: 4px;
+}
+
+.tech-tag {
+	display: inline-block;
+	padding: 6px 12px;
+	background: linear-gradient(135deg, rgba(13, 148, 136, 0.08), rgba(20, 184, 166, 0.12));
+	color: var(--primary);
+	font-size: 12px;
+	font-weight: 600;
+	border-radius: 6px;
+	border: 1px solid rgba(13, 148, 136, 0.25);
+	transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+	background: linear-gradient(135deg, rgba(13, 148, 136, 0.15), rgba(20, 184, 166, 0.2));
+	transform: translateY(-1px);
+	border-color: rgba(13, 148, 136, 0.4);
+}
+
 
 .bounce-right {
 	margin-top: 16px;
@@ -1436,13 +1528,7 @@ footer .sm a {
 @media screen and (max-width: 768px) {
 	/* Timeline already centered on desktop, no changes needed */
 
-	.date,
-	.cc-time {
-		position: relative;
-		right: auto;
-		top: auto;
-		margin-bottom: 12px;
-	}
+
 
 	.section-title {
 		font-size: 28px;
@@ -1459,7 +1545,7 @@ footer .sm a {
 	}
 
 	section {
-		padding: 60px 0;
+		padding: 30px 0;
 	}
 
 	#home .content h6 {
